@@ -11,7 +11,22 @@ class CartItem extends React.Component {
         }
 
         // this.increaseQuantity = this.increaseQuantity.bind(this);
+        // this.testing();
     }
+
+    // testing() {
+    //     const promise = new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             resolve('done');
+    //         }, 5000);
+    //     });
+
+    //     promise.then(() => {
+    //         // setState acts like a synchronous call
+    //         this.setState({ qty: 100} );
+    //         console.log('state', this.state);
+    //     });
+    // }
 
     // arrow function automatically binds the value of this to the instance of class
     increaseQuantity = () => {
@@ -49,6 +64,8 @@ class CartItem extends React.Component {
     }
 
     render() {
+        console.log('render');
+
         const {price, title, qty} = this.state;
 
         return (
