@@ -47,7 +47,7 @@ class CartItem extends React.Component {
         });
     }
 
-    decreaseQuantity() {
+    decreaseQuantity = () => {
         const { qty } = this.state;
 
         if(qty === 0) {
@@ -65,8 +65,9 @@ class CartItem extends React.Component {
 
     render() {
         // const {price, title, qty} = this.state;
-        console.log('this.props', this.props);
+        // console.log('this.props', this.props);
         const {price, title, qty} = this.props.product;
+        const {product, onIncreaseQuantity, onDecreaseQuantity, onDeleteProduct} = this.props;
 
         return (
             <div className="cart-item">
@@ -80,9 +81,9 @@ class CartItem extends React.Component {
                     <div style={ {color: '#777'} }>Qty: { qty }</div>
                     <div className="cart-item-actions">
                         {/* Buttons */}
-                        <img alt="increase" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/61/61183.png?w=740&t=st=1681907291~exp=1681907891~hmac=7dcd8a8726aea1919d9fa61b768e6e32101cfa46d2a013b6f7b78f78dcc28e34" onClick={this.increaseQuantity} />
-                        <img alt="decrease" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/809/809201.png?w=740&t=st=1681907263~exp=1681907863~hmac=02a9d2eb5cc5f94e7bd47b1a43569c53d0aeadc20bd31779dbe2295a31880c6c" onClick={this.decreaseQuantity.bind(this)} />
-                        <img alt="delete" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/63/63481.png?w=740&t=st=1681907382~exp=1681907982~hmac=f820d8a912894b17f6237701e0170e0b8317fa69abf2b9688b78154330faeb9b" />
+                        <img alt="increase" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/61/61183.png?w=740&t=st=1681907291~exp=1681907891~hmac=7dcd8a8726aea1919d9fa61b768e6e32101cfa46d2a013b6f7b78f78dcc28e34" onClick={() => onIncreaseQuantity(product)} />
+                        <img alt="decrease" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/809/809201.png?w=740&t=st=1681907263~exp=1681907863~hmac=02a9d2eb5cc5f94e7bd47b1a43569c53d0aeadc20bd31779dbe2295a31880c6c" onClick={() => onDecreaseQuantity(product)} />
+                        <img alt="delete" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/63/63481.png?w=740&t=st=1681907382~exp=1681907982~hmac=f820d8a912894b17f6237701e0170e0b8317fa69abf2b9688b78154330faeb9b" onClick={() => onDeleteProduct(product.id)} />
                     </div>
                 </div>
             </div>
