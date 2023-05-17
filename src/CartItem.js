@@ -70,7 +70,7 @@ const CartItem = (props) => {
     return (
         <div className="cart-item">
             <div className="left-block">
-                <img alt="phone" style={styles.image} />
+                <img src={product.img} alt="phone" style={styles.image} />
             </div>
 
             <div className="right-block">
