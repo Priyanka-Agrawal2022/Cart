@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 class App extends React.Component {
   constructor() {
     super();
+    console.log('CONSTRUCTOR');
+    // this.state = {count: 0}
     this.state = {
         products: [
             {
@@ -30,6 +32,35 @@ class App extends React.Component {
             }
         ]
     }
+}
+
+componentDidMount() {
+    console.log('COMPONENT_DID_MOUNT');
+}
+
+componentDidUpdate(prevProps, prevState) {
+    console.log('COMPONENT_DID_UPDATE');
+    // console.log('prevProps', prevProps);
+    console.log('prevState', prevState);
+    // console.log('props', this.props);
+    console.log('state', this.state);
+
+    if(prevState.count === 0 && this.state.count === 1) {
+        // actions
+        this.setState({count: 100});
+    }
+}
+
+handleClick = () => {
+    this.setState(prevState => {
+        return {
+            count: prevState.count + 1
+        }
+    });
+}
+
+componentWillUnmount() {
+    // cleanup 
 }
 
 handleIncreaseQuantity = (product) => {
@@ -88,7 +119,7 @@ getCartTotal = () => {
 
     let cartTotal = 0;
 
-    products.map((product) => {
+    products.forEach((product) => {
         cartTotal += product.qty*product.price;
     });
 
@@ -96,6 +127,7 @@ getCartTotal = () => {
 }
 
 render() {
+    console.log('RENDER');
     const { products } = this.state;
     return (
       <div className="App">
@@ -109,6 +141,12 @@ render() {
         <div style={ {padding: 10, fontSize: 20} }>TOTAL: {this.getCartTotal()}</div>
       </div>
     );
+    // return (
+    //     <div className="App">
+    //         {this.state.count}
+    //         <button onClick={this.handleClick}>Inc count</button>
+    //     </div>
+    // );
   }
 }
 
